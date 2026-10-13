@@ -1,0 +1,80 @@
+{
+  "metrics": {
+    "test_accuracy": 1.0,
+    "test_log_loss": 0.06707141252563348
+  },
+  "model_sha256": "a999f3d322a62b2055851b8b861258f6cb6d633ebcb3bd498070589fbdb18924",
+  "shifted_demo": {
+    "samples": 45,
+    "threshold": 0.2,
+    "features": [
+      {
+        "feature": "alcohol",
+        "psi": 12.313318674622607,
+        "alert": true
+      },
+      {
+        "feature": "malic_acid",
+        "psi": 2.6142380890114927,
+        "alert": true
+      },
+      {
+        "feature": "ash",
+        "psi": 0.3507239488393495,
+        "alert": true
+      },
+      {
+        "feature": "alcalinity_of_ash",
+        "psi": 0.29305013183390627,
+        "alert": true
+      },
+      {
+        "feature": "magnesium",
+        "psi": 1.3861288666822258,
+        "alert": true
+      },
+      {
+        "feature": "total_phenols",
+        "psi": 0.35692216093376894,
+        "alert": true
+      },
+      {
+        "feature": "flavanoids",
+        "psi": 0.4303532478454233,
+        "alert": true
+      },
+      {
+        "feature": "nonflavanoid_phenols",
+        "psi": 0.28663851404030394,
+        "alert": true
+      },
+      {
+        "feature": "proanthocyanins",
+        "psi": 1.3410687748776875,
+        "alert": true
+      },
+      {
+        "feature": "color_intensity",
+        "psi": 0.22258397031221622,
+        "alert": true
+      },
+      {
+        "feature": "hue",
+        "psi": 1.7324577758805773,
+        "alert": true
+      },
+      {
+        "feature": "od280/od315_of_diluted_wines",
+        "psi": 0.1945317342711712,
+        "alert": false
+      },
+      {
+        "feature": "proline",
+        "psi": 0.26283943501982504,
+        "alert": true
+      }
+    ],
+    "action": "review distributions; drift alone does not justify retraining"
+  },
+  "note": "Small educational dataset; drift threshold is illustrative, not operationally calibrated."
+}

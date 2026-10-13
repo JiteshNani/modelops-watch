@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ModelOps Watch</title>
+<style>body{margin:0;background:#f3f5f8;color:#14263d;font:16px system-ui}main{max-width:1080px;margin:auto;padding:50px 24px}small{font-weight:700;color:#35715e;letter-spacing:.1em}h1{font-size:48px;margin:12px 0}p{line-height:1.6;max-width:850px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}section{background:white;padding:22px;border:1px solid #dce3eb;border-radius:12px}textarea,pre{box-sizing:border-box;width:100%;min-height:320px;font:13px/1.5 monospace;border:1px solid #c5d0dc;border-radius:6px;padding:12px;background:#f7f9fc;white-space:pre-wrap;word-break:break-word}button{background:#173f64;color:white;border:0;border-radius:6px;padding:12px 20px;font:600 15px system-ui;cursor:pointer}button:disabled{opacity:.6}a{color:#173f64}#status{font-size:14px}@media(max-width:750px){.grid{grid-template-columns:1fr}h1{font-size:34px}}</style>
+<main><small>JITESH NAGARAJ JALLA · PORTFOLIO PROTOTYPE</small><h1>ModelOps Watch</h1><p>Serve a model. Identify its artifact. Review distribution shifts.</p><p>An end-to-end classification and monitoring prototype using a stratified train/test split, train-only standardization, logistic regression, validated JSON model artifacts, SHA-256 fingerprints and Population Stability Index monitoring. JSON inference is tested against scikit-learn probabilities to avoid loading executable pickle artifacts.</p><a href="/docs">Explore the API</a><div class="grid"><section><h2>Request</h2><label for="payload">Editable JSON example</label><textarea id="payload" spellcheck="false">{
+  &quot;rows&quot;: [
+    [
+      13.48,
+      1.81,
+      2.41,
+      20.5,
+      100.0,
+      2.7,
+      2.98,
+      0.26,
+      1.86,
+      5.1,
+      1.04,
+      3.47,
+      920.0
+    ],
+    [
+      12.29,
+      2.83,
+      2.22,
+      18.0,
+      88.0,
+      2.45,
+      2.25,
+      0.25,
+      1.99,
+      2.15,
+      1.15,
+      3.3,
+      290.0
+    ]
+  ]
+}</textarea><button id="run">Run local demo</button><p id="status" role="status" aria-live="polite">No request sent yet.</p></section><section><h2>Response</h2><pre id="response" aria-live="polite">The response will appear here.</pre></section></div><p><strong>Evaluation boundary:</strong> PSI is sensitive to bins, smoothing and sample size. The threshold 0.2 is illustrative, not calibrated for a business. Feature drift is not concept drift and does not directly measure accuracy loss. No automatic retraining, cloud rollout, database registry or production monitoring deployment is claimed. Model fingerprinting is an identifier, not cryptographic signing or trust verification.</p><p>Runs locally. No API key required. Portfolio implementation developed with AI assistance.</p></main>
+<script>const run=document.getElementById('run');run.addEventListener('click',async()=>{run.disabled=true;document.getElementById('status').textContent='Running…';try{const data=JSON.parse(document.getElementById('payload').value);const start=performance.now();const r=await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const result=await r.json();document.getElementById('response').textContent=JSON.stringify(result,null,2);document.getElementById('status').textContent=`HTTP ${r.status} · ${Math.round(performance.now()-start)} ms in this browser`; }catch(e){document.getElementById('status').textContent=e.message;}finally{run.disabled=false;}});</script></html>
