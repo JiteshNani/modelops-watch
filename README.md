@@ -44,7 +44,7 @@ Stratified split → train-only scaler → logistic regression → JSON artifact
 - `evaluation.json`: actual saved local evaluation output; regenerate with the command above.
 - `LEARNING_GUIDE.md`: walkthrough, interview questions and a practical extension exercise.
 - `Dockerfile`: non-root container configuration. Docker execution has not been verified locally.
-- `ci.yml`: ready-to-install CI definition; place at `.github/workflows/ci.yml` to activate.
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml): active Linux CI definition that trains the benchmark model and runs the tests on pushes, pull requests and manual dispatch.
 
 ## Measured local results
 
